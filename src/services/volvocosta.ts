@@ -21,7 +21,7 @@ export async function getVehicles(filters: VehicleFilters  = {}): Promise<Multip
     offset: 0,
     ...filters,
   };
-  return guard(multipleVehiclesDecoder)((await axios.get(`vehicle/list`)).data);
+  return guard(multipleVehiclesDecoder)((await axios.get(`v1/vehicle/list`)).data);
 }
 
 export async function getServices(filters: ServiceFilters = {}): Promise<MultipleVehicles> {

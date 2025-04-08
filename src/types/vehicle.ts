@@ -1,49 +1,25 @@
 import { array, boolean, Decoder, iso8601, number, object, string } from 'decoders';
 
 export interface Vehicle {
-    uuid: string ,
-    latency: number,
-    statusCode: number,
-    label: string,
-    filePath: string,
-    sendFileAsBody: boolean,
 
-  slug: string;
-  title: string;
-  description: string;
-  tagList: string[];
-  createdAt: Date;
-  updatedAt: Date;
-  favorited: boolean;
-  favoritesCount: number;
+          id: number;
+        imageURL: string;
+        comment: string;
+
 }
 
 export const vehicleDecoder: Decoder<Vehicle> = object({
-    uuid: string ,
-    latency: number,
-    statusCode: number,
-    label: string,
-    filePath: string,
-    sendFileAsBody: boolean,
-
-  slug: string,
-  title: string,
-  description: string,
-  tagList: array(string),
-  createdAt: iso8601,
-  updatedAt: iso8601,
-  favorited: boolean,
-  favoritesCount: number,
+   id: number,
+          imageURL: string,
+          comment: string,
 });
 
 export interface MultipleVehicles {
-  articles: Vehicle[];
-  articlesCount: number;
+  vehicles: Vehicle[];
 }
 
 export const multipleVehiclesDecoder: Decoder<MultipleVehicles> = object({
-  articles: array(vehicleDecoder),
-  articlesCount: number,
+  vehicles: array(vehicleDecoder),
 });
 
 

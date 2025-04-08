@@ -4,32 +4,25 @@ import { Vehicle } from '../../types/vehicle';
 
 export function VehiclePreview({
   article: {
-  label,
-  latency,
-    createdAt,
-    favorited,
-    favoritesCount,
-    slug,
-    title,
-    description,
-    tagList,
+    id,
+    comment
   }
 }: {
   article: Vehicle;
 }) {
   return (
     <div className='article-preview'>
-      <span className='date'>{label}</span>
-
+      <span className='id'>{id}</span>
+      <div><span className='comment'>{comment}</span></div>
       <div className='article-meta'>
         <Link to={`/`} className='author'>
           <img src={ undefined} />
         </Link>
         <div className='info'>
           <Link to={`/`} className='author'>
-            {title}
+            {comment}
           </Link>
-          <span className='date'>{format(createdAt, 'PP')}</span>
+          <span className='date'>{id}</span>
         </div>
 
       </div>

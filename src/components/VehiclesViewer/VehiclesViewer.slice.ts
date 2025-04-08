@@ -3,21 +3,19 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Vehicle, multipleVehiclesDecoder, MultipleVehicles } from '../../types/vehicle';
 import * as R from 'ramda';
 
-export interface ArticleViewerArticle {
+export interface VehiclesViewerArticle {
   article: Vehicle;
   isSubmitting: boolean;
 }
 
-export interface ArticleViewerState {
-  articles: Option<readonly ArticleViewerArticle[]>;
+export interface VehiclesViewerState {
+  vehicles: Option<readonly VehiclesViewerArticle[]>;
   currentPage: number;
-  articlesCount: number;
 }
 
-const initialState: ArticleViewerState = {
-  articles: None,
+const initialState: VehiclesViewerState = {
+  vehicles: None,
   currentPage: 1,
-  articlesCount: 0,
 };
 
 const slice = createSlice({
@@ -25,9 +23,8 @@ const slice = createSlice({
   initialState,
   reducers: {
     startLoadingVehicles: () => initialState,
-    loadVehicles: (state, { payload: { articles, articlesCount } }: PayloadAction<MultipleVehicles>) => {
-      state.articles = Some(articles.map((article) => ({ article, isSubmitting: false })));
-      state.articlesCount = articlesCount;
+    loadVehicles: (state, { payload: { vehicles } }: PayloadAction<MultipleVehicles>) => {
+      state.vehicles = Some(vehicles.map((article) => ({ article, isSubmitting: false })));
     },
   },
 });

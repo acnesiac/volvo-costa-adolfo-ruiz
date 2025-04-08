@@ -4,7 +4,7 @@ import { useStore } from '../../state/storeHooks';
 import { Vehicle } from '../../types/vehicle';
 import { classObjectToClassName } from '../../types/style';
 import { VehiclePreview } from '../VehiclePreview/VehiclePreview';
-import { ArticleViewerState } from './VehiclesViewer.slice';
+import { VehiclesViewerState } from './VehiclesViewer.slice';
 
 export function VehiclesViewer({
   toggleClassName,
@@ -19,12 +19,12 @@ export function VehiclesViewer({
   onPageChange?: (index: number) => void;
   onTabChange?: (tab: string) => void;
 }) {
-  const { articles, articlesCount, currentPage } = useStore(({ vehiclesViewer }) => vehiclesViewer);
+  const { vehicles, currentPage } = useStore(({ vehiclesViewer }) => vehiclesViewer);
 
   return (
     <Fragment>
       <ArticlesTabSet {...{ tabs, selectedTab, toggleClassName, onTabChange }} />
-      <VehicleList articles={articles} />
+      <VehicleList vehicles={vehicles} />
     </Fragment>
   );
 }
@@ -69,23 +69,23 @@ function Tab({ tab, active, onClick }: { tab: string; active: boolean; onClick: 
   );
 }
 
-function VehicleList({ articles }: { articles: ArticleViewerState['articles'] }) {
-  return articles.match({
+function VehicleList({ vehicles }: { vehicles: VehiclesViewerState['vehicles'] }) {
+  return vehicles.match({
     none: () => (
       <div className='article-preview' key={1}>
         Loading vehicles...
       </div>
     ),
-    some: (articles) => (
+    some: (vehicles) => (
       <Fragment>
-        {articles.length === 0 && (
+        {vehicles.length === 0 && (
           <div className='article-preview' key={1}>
             No vehicles are here... yet.
           </div>
         )}
-        {articles.map(({ article }, index) => (
+        {vehicles.map(({ article }, index) => (
           <VehiclePreview
-            key={article.slug}
+            key={article.id}
             article={article}
           />
         ))}
