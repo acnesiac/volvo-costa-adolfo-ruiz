@@ -5,7 +5,6 @@ import { useStoreWithInitializer } from '../../../state/storeHooks';
 import { VehiclesViewer } from '../../VehiclesViewer/VehiclesViewer';
 import {  loadVehicles, startLoadingVehicles } from '../../VehiclesViewer/VehiclesViewer.slice';
 import { ContainerPage } from '../../ContainerPage/ContainerPage';
-import { changeTab, loadTags, startLoadingTags } from './Home.slice';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Avatar from '@mui/material/Avatar';
@@ -15,7 +14,7 @@ import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Link from '@mui/material/Link';
 
 export function Home() {
-  const { tags, selectedTab } = useStoreWithInitializer(({ home }) => home, load);
+  const { } = useStoreWithInitializer(({ home }) => home, load);
 
   return (
     <div >
@@ -25,7 +24,7 @@ export function Home() {
             {renderBanner()}
 
           <VehiclesViewer
-            tabs={buildTabsNames(selectedTab)}
+            tabs={buildTabsNames()}
           />
      </Stack>
     </Box>
@@ -70,13 +69,13 @@ function renderBanner() {
   );
 }
 
-function buildTabsNames(selectedTab: string) {
-  return Array.from(new Set([...(['Vehicles']), 'Services', selectedTab]));
+function buildTabsNames() {
+  return Array.from(new Set([...['Vehicles'], 'Services']));
 }
 
 async function getFeedOrGlobalArticles() {
-  const { selectedTab } = store.getState().home;
-  return await (selectedTab === 'Vehicles' ? getVehicles : getServices)(
+  const {  } = store.getState().home;
+  return await (getVehicles)(
   );
 }
 

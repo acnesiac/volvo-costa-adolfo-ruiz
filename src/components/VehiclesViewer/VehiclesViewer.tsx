@@ -44,21 +44,6 @@ function ArticlesTabSet({
   );
 }
 
-function Tab({ tab, active, onClick }: { tab: string; active: boolean; onClick: () => void }) {
-  return (
-    <li >
-      <a
-        href='#'
-        onClick={(ev) => {
-          ev.preventDefault();
-          onClick();
-        }}
-      >
-        {tab}
-      </a>
-    </li>
-  );
-}
 
 function VehicleList({ vehicles }: { vehicles: VehiclesViewerState['vehicles'] }) {
   return vehicles.match({
