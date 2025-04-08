@@ -10,23 +10,17 @@ import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Link from '@mui/material/Link';
 
 export function VehiclesViewer({
-  toggleClassName,
   tabs,
-  selectedTab,
-  onPageChange,
-  onTabChange,
+
 }: {
-  toggleClassName: string;
   tabs: string[];
-  selectedTab: string;
-  onPageChange?: (index: number) => void;
-  onTabChange?: (tab: string) => void;
+
 }) {
   const { vehicles, currentPage } = useStore(({ vehiclesViewer }) => vehiclesViewer);
 
   return (
     <Fragment>
-      <ArticlesTabSet {...{ tabs, selectedTab, toggleClassName, onTabChange }} />
+      <ArticlesTabSet {...{ tabs }} />
       <VehicleList vehicles={vehicles} />
     </Fragment>
   );
@@ -35,14 +29,9 @@ export function VehiclesViewer({
 
 function ArticlesTabSet({
   tabs,
-  toggleClassName,
-  selectedTab,
-  onTabChange,
 }: {
   tabs: string[];
-  toggleClassName: string;
-  selectedTab: string;
-  onTabChange?: (tab: string) => void;
+
 }) {
   return (
     <Breadcrumbs aria-label="breadcrumb">
@@ -86,10 +75,10 @@ function VehicleList({ vehicles }: { vehicles: VehiclesViewerState['vehicles'] }
             No vehicles are here... yet.
           </div>
         )}
-        {vehicles.map(({ article }, index) => (
+        {vehicles.map(({ vehicle }, index) => (
           <VehiclePreview
-            key={article.id}
-            article={article}
+            key={vehicle.id}
+            vehicle={vehicle}
           />
         ))}
         </List>

@@ -4,8 +4,7 @@ import { Vehicle, multipleVehiclesDecoder, MultipleVehicles } from '../../types/
 import * as R from 'ramda';
 
 export interface VehiclesViewerArticle {
-  article: Vehicle;
-  isSubmitting: boolean;
+  vehicle: Vehicle;
 }
 
 export interface VehiclesViewerState {
@@ -24,7 +23,7 @@ const slice = createSlice({
   reducers: {
     startLoadingVehicles: () => initialState,
     loadVehicles: (state, { payload: { vehicles } }: PayloadAction<MultipleVehicles>) => {
-      state.vehicles = Some(vehicles.map((article) => ({ article, isSubmitting: false })));
+      state.vehicles = Some(vehicles.map((vehicle) => ({ vehicle})));
     },
   },
 });

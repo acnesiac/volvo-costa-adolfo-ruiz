@@ -8,12 +8,12 @@ import ListItemText from '@mui/material/ListItemText';
 import * as React from 'react';
 
 export function VehiclePreview({
-  article: {
+  vehicle: {
     id,
     comment
   }
 }: {
-  article: Vehicle;
+  vehicle: Vehicle;
 }) {
   return (
     <ListItem alignItems="flex-start">
