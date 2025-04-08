@@ -1,6 +1,11 @@
 import { format } from 'date-fns';
 import { Link } from 'react-router-dom';
 import { Vehicle } from '../../types/vehicle';
+import { Button } from '@mui/material';
+import ListItem from '@mui/material/ListItem';
+import Typography from '@mui/material/Typography';
+import ListItemText from '@mui/material/ListItemText';
+import * as React from 'react';
 
 export function VehiclePreview({
   article: {
@@ -11,22 +16,39 @@ export function VehiclePreview({
   article: Vehicle;
 }) {
   return (
-    <div className='article-preview'>
-      <span className='id'>{id}</span>
-      <div><span className='comment'>{comment}</span></div>
-      <div className='article-meta'>
-        <Link to={`/`} className='author'>
+    <ListItem alignItems="flex-start">
+
+     <Button variant="text">{id}</Button>
+ <ListItemText
+          primary="Brunch this weekend?"
+          secondary={
+            <React.Fragment>
+              <Typography
+                component="span"
+                variant="body2"
+                sx={{ color: 'text.primary', display: 'inline' }}
+              >
+               {comment}
+              </Typography>
+              {" — I'll be in your neighborhood doing errands this…"}
+            </React.Fragment>
+          }
+        />
+      <span></span>
+      <div><span >{comment}</span></div>
+      <div >
+        <Link to={`/`}>
           <img src={ undefined} />
         </Link>
-        <div className='info'>
-          <Link to={`/`} className='author'>
+        <div>
+          <Link to={`/`}>
             {comment}
           </Link>
-          <span className='date'>{id}</span>
+          <span >{id}</span>
         </div>
 
       </div>
 
-    </div>
+    </ListItem>
   );
 }

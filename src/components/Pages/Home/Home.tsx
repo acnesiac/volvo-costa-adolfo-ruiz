@@ -6,15 +6,21 @@ import { VehiclesViewer } from '../../VehiclesViewer/VehiclesViewer';
 import {  loadVehicles, startLoadingVehicles } from '../../VehiclesViewer/VehiclesViewer.slice';
 import { ContainerPage } from '../../ContainerPage/ContainerPage';
 import { changeTab, loadTags, startLoadingTags } from './Home.slice';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Avatar from '@mui/material/Avatar';
+import Stack from '@mui/material/Stack';
+import { deepOrange, deepPurple } from '@mui/material/colors';
 
 export function Home() {
   const { tags, selectedTab } = useStoreWithInitializer(({ home }) => home, load);
 
   return (
-    <div className='home-page'>
-      {renderBanner()}
+    <div >
       <ContainerPage>
-        <div className='col-md-9'>
+            {renderBanner()}
+
+        <div>
           <VehiclesViewer
             toggleClassName='feed-toggle'
             selectedTab={selectedTab}
@@ -36,11 +42,15 @@ async function load() {
 
 function renderBanner() {
   return (
-    <div className='banner'>
-      <div className='container'>
-        <h1 className='logo-font'>Volvo Costa - Adolfo Ruiz Rivas </h1>
-      </div>
-    </div>
+    <Box sx={{ width: '100%' }}>
+     <Stack direction="row" spacing={2}>
+    <Avatar sx={{ bgcolor: deepOrange[500] }}>N</Avatar>
+
+      <Typography variant="h6" gutterBottom>
+            Volvo Costa - Adolfo Ruiz Rivas
+      </Typography>
+      </Stack>
+    </Box>
   );
 }
 

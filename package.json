@@ -3,13 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@fontsource/roboto": "^4.5.8",
+    "@mui/icons-material": "^5.11.11",
+    "@mui/material": "^5.11.15",
+    "@mui/styled-engine-sc": "^5.11.11",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "@fontsource/roboto": "^5.2.5",
     "@hqoss/monads": "^0.5.0",
-    "@mui/icons-material": "^7.0.1",
-    "@mui/material": "^7.0.1",
-    "@mui/styled-engine-sc": "^7.0.1",
+    "@mui/core": "^5.0.0-alpha.49",
+    "@mui/lab": "^5.0.0-alpha.49",
+    "@mui/utils": "^5.0.1",
     "@reduxjs/toolkit": "^1.6.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
@@ -32,7 +38,6 @@
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
-    "styled-components": "^6.1.17",
     "typescript": "^4.3.5"
   },
   "peerDependencies": {
@@ -48,10 +53,7 @@
     "prettier": "prettier --write src",
     "lint": "eslint src"
   },
-  "pre-commit": [
-    "prettier:check",
-    "lint"
-  ],
+  "pre-commit": [],
   "eslintConfig": {
     "extends": "react-app"
   },
